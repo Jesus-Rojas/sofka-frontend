@@ -1,0 +1,52 @@
+<div class="background-custom"></div>
+<div class="px-5 pb-5">
+    <div class="row mt-5 pt-2 pb-5">
+        <h4 class="text-left pb-5 col-4 text-white">
+            Puntos: 
+            <span [ngSwitch]="ronda">
+                <span *ngSwitchCase="1">0</span>
+                <span *ngSwitchCase="2">10</span>
+                <span *ngSwitchCase="3">20</span>
+                <span *ngSwitchCase="4">30</span>
+                <span *ngSwitchCase="5">40</span>
+                <span *ngSwitchDefault></span>
+            </span>
+        </h4>
+        <h4 class="text-center pb-5 col-4 text-white">{{ dificultad }}</h4>
+        <h4 class="text-right pb-5 col-4 text-white">Ronda {{ ronda }} de 5</h4>
+        <h1 class="text-center pb-5 pt-5 col-12 text-white">{{ preguntas }}</h1>
+        <div class="col-12 pt-5 pb-5"></div>
+        <div class="col-2"></div>
+        <div class="border border-1 border-success col-8 py-5">
+            <div class="row">
+                <ng-container *ngFor="let item of respuestas; let i = index">
+                    <ng-container *ngIf="(i+1) % 2 == 0; then thenTemplate; else elseTemplate"></ng-container>
+                    <ng-template #thenTemplate>
+                        <div class="col-6 mb-2 px-4 py-1 text-left">
+                            <button [disabled]="item.disabled" class="btn {{ (i+1) == 2 ? 'btn-warning' : 'btn-info' }} w-75 h-100 py-4 text-white" (click)="answer(item.id)">
+                                {{ item.nombre }}
+                            </button>
+                        </div>
+                    </ng-template>
+                    <ng-template #elseTemplate>
+                        <div class="col-6 mb-2 px-4 py-1 text-right">
+                            <button [disabled]="item.disabled" class="btn {{ (i+1) == 1 ? 'btn-danger' : 'btn-secondary' }} w-75 h-100 py-4 text-white" (click)="answer(item.id)">
+                                {{ item.nombre }}
+                            </button>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<div class="col-12 pb-5" *ngIf="!disabledExit">
+    <h1 class="text-center text-white">
+        <div class="custom-svg d-inline-block" (click)="salir()">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+                <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+            </svg>
+        </div>
+    </h1>
+</div>

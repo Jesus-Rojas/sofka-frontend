@@ -1,0 +1,18 @@
+<div class="mt-5 pt-3">
+  <div class="alert custom-alert mx-auto mt-5 pb-5 border border-1" role="alert">
+    <h2 class="text-center text-success mt-5 pt-3 mb-5">
+      Cuestionario de preguntas y respuestas
+    </h2>
+    
+    <input
+      type="text"
+      class="w-25 text-center m-auto form-control bg-dark border-dark text-success"
+      placeholder="Ingrese su nombre..."
+      [(ngModel)]="nombre"
+      (change)="nombre=nombre.trim()"
+    >
+    <div class="text-center pt-3 pb-4">
+      <button (click)="startGame()" class="btn btn-light bg-dark mx-auto text-success border-dark">Iniciar Juego</button>
+    </div>
+  </div>
+</div>
