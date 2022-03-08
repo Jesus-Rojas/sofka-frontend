@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent implements OnInit {
   
-  rutaBackground = 'url(/assets/img/background.jpg)';
+  rutaBackground = `url(${environment.img}/assets/img/background.jpg)`;
 
   constructor (private router: Router) { }
 
