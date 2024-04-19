@@ -9,7 +9,7 @@
     "test": "ng test"
   },
   "engines": {
-    "node": "14"
+    "node": "14.20.0"
   },
   "private": true,
   "dependencies": {
